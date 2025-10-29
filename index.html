@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Exercise 7: Banh Mi, menus, and layout</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
+    <title>Greg's Banh Mi - Authentic Vietnamese Sandwiches</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -17,12 +16,7 @@
         }
         
         body {
-            font-family: "Open Sans", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-            font-variation-settings: "wdth" 100;
-            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f9f9f9;
@@ -31,142 +25,140 @@
             padding: 20px;
         }
         
-        /* Header styles */
-        #site-title {
-            font-family: "Oswald", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 700;
-            font-style: normal;
-            font-size: 3rem;
+        header {
             text-align: center;
-            color: #d32f2f;
-            margin: 20px 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-bottom: 30px;
         }
         
-        /* Navigation styles - Part 1 */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 3.5rem;
+            color: #d32f2f;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
         nav {
-            font-family: "Raleway", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 500;
-            font-style: normal;
-            background-color: #d32f2f;
-            border-radius: 8px;
             margin: 20px 0 40px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            padding: 0;
-        }
-        
-        nav li {
-            margin: 0;
+            gap: 40px;
         }
         
         nav a {
-            color: white;
+            color: #333;
             text-decoration: none;
-            display: block;
-            padding: 15px 25px;
+            font-weight: 600;
             font-size: 1.1rem;
-            transition: background-color 0.3s;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
         }
         
         nav a:hover {
-            background-color: #b71c1c;
-        }
-        
-        /* Hero section */
-        .hero {
-            background-color: #ffebee;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        
-        .hero h1 {
-            font-family: "Oswald", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 1.8rem;
             color: #d32f2f;
-            line-height: 1.4;
-            margin: 0;
         }
         
-        /* Sandwich grid - Part 2 */
-        .sandwich-grid {
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #d32f2f;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+      .sandwich-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .sandwich-item {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
         }
         
         .sandwich-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .sandwich-img {
             width: 100%;
-            height: 200px;
-            background-color: #ffcdd2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #d32f2f;
-            font-weight: bold;
-            font-size: 1.1rem;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .sandwich-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .sandwich-item:hover .sandwich-img img {
+            transform: scale(1.05);
         }
         
         .sandwich-content {
-            padding: 20px;
+            padding: 25px;
         }
         
         .sandwich-content h2 {
-            font-family: "Oswald", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 600;
-            font-style: normal;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             font-size: 1.5rem;
             color: #d32f2f;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .sandwich-content p {
-            color: #666;
-            line-height: 1.6;
+            color: #555;
+            line-height: 1.7;
+            text-align: left;
         }
         
-        /* Footer - Part 3 */
         footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
             background-color: #333;
             color: white;
-            text-align: center;
-            padding: 30px;
             border-radius: 8px;
-            margin-top: 40px;
             font-style: italic;
             font-size: 1.1rem;
         }
         
-        /* Responsive design */
         @media (max-width: 768px) {
             .sandwich-grid {
                 grid-template-columns: 1fr;
@@ -174,38 +166,37 @@
             
             nav ul {
                 flex-direction: column;
+                gap: 15px;
             }
             
-            nav a {
-                text-align: center;
-            }
-            
-            #site-title {
+            h1 {
                 font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <h1 id="site-title">Greg's Banh Mi</h1>
+    <header>
+        <h1>GREG'S BANH MI</h1>
+    </header>
     
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/">Menu</a></li>
-            <li><a href="/">About</a></li>
-            <li><a href="/">Contact</a></li>   
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">MENU</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">CONTACT</a></li>
         </ul>
     </nav>
-  
+    
     <section class="hero">
-        <h1>At Greg's Banh Mi, we're serving up the perfect marriage of French and Vietnamese culinary traditions—crispy-on-the-outside, pillowy-on-the-inside baguettes loaded with bold, fresh flavors that'll make your taste buds sing.</h1>
+        <p>At Greg's Banh Mi, we're serving up the perfect marriage of French and Vietnamese culinary traditions—crispy-on-the-outside, pillowy-on-the-inside baguettes loaded with bold, fresh flavors that'll make your taste buds sing.</p>
     </section>
     
     <div class="sandwich-grid">
         <div class="sandwich-item">
             <div class="sandwich-img">
-                [Classic Pork Banh Mi Image]
+                <img src="sandwich.jpg" alt="Classic Pork Banh Mi">
             </div>
             <div class="sandwich-content">
                 <h2>Classic Pork Banh Mi</h2>
@@ -215,7 +206,7 @@
         
         <div class="sandwich-item">
             <div class="sandwich-img">
-                [Lemongrass Chicken Banh Mi Image]
+                <img src="sandwich.jpg" alt="Lemongrass Chicken Banh Mi">
             </div>
             <div class="sandwich-content">
                 <h2>Lemongrass Chicken Banh Mi</h2>
@@ -225,7 +216,7 @@
         
         <div class="sandwich-item">
             <div class="sandwich-img">
-                [Tofu Banh Mi Image]
+                <img src="sandwich.jpg" alt="Tofu Banh Mi">
             </div>
             <div class="sandwich-content">
                 <h2>Tofu Banh Mi</h2>
@@ -235,7 +226,7 @@
         
         <div class="sandwich-item">
             <div class="sandwich-img">
-                [Five-Spice Beef Banh Mi Image]
+                <img src="sandwich.jpg" alt="Five-Spice Beef Banh Mi">
             </div>
             <div class="sandwich-content">
                 <h2>Five-Spice Beef Banh Mi</h2>
@@ -244,6 +235,8 @@
         </div>
     </div>
     
-    <footer>Because life's too short for boring sandwiches. Greg's got you covered—one crispy baguette at a time.</footer>
+    <footer>
+        Because life's too short for boring sandwiches. Greg's got you covered—one crispy baguette at a time.
+    </footer>
 </body>
 </html>
