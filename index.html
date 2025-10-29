@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Exercise 7: Banh Mi, menus, and layout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Open Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header styles */
+        #site-title {
+            font-family: "Oswald", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 3rem;
+            text-align: center;
+            color: #d32f2f;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Navigation styles - Part 1 */
+        nav {
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            background-color: #d32f2f;
+            border-radius: 8px;
+            margin: 20px 0 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #b71c1c;
+        }
+        
+        /* Hero section */
+        .hero {
+            background-color: #ffebee;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .hero h1 {
+            font-family: "Oswald", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 1.8rem;
+            color: #d32f2f;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        /* Sandwich grid - Part 2 */
+        .sandwich-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .sandwich-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .sandwich-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .sandwich-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ffcdd2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .sandwich-content {
+            padding: 20px;
+        }
+        
+        .sandwich-content h2 {
+            font-family: "Oswald", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 1.5rem;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+        
+        .sandwich-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Footer - Part 3 */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .sandwich-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav a {
+                text-align: center;
+            }
+            
+            #site-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="site-title">Greg's Banh Mi</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Menu</a></li>
+            <li><a href="/">About</a></li>
+            <li><a href="/">Contact</a></li>   
+        </ul>
+    </nav>
+  
+    <section class="hero">
+        <h1>At Greg's Banh Mi, we're serving up the perfect marriage of French and Vietnamese culinary traditions—crispy-on-the-outside, pillowy-on-the-inside baguettes loaded with bold, fresh flavors that'll make your taste buds sing.</h1>
+    </section>
+    
+    <div class="sandwich-grid">
+        <div class="sandwich-item">
+            <div class="sandwich-img">
+                [Classic Pork Banh Mi Image]
+            </div>
+            <div class="sandwich-content">
+                <h2>Classic Pork Banh Mi</h2>
+                <p>Tender marinated pork topped with crisp pickled vegetables, fresh cilantro, and a smear of pâté on a perfectly crusty baguette. A traditional favorite that balances savory, sweet, and tangy flavors in every bite.</p>
+            </div>
+        </div>
+        
+        <div class="sandwich-item">
+            <div class="sandwich-img">
+                [Lemongrass Chicken Banh Mi Image]
+            </div>
+            <div class="sandwich-content">
+                <h2>Lemongrass Chicken Banh Mi</h2>
+                <p>Grilled chicken marinated in fragrant lemongrass and garlic, paired with cucumber, jalapeños, and our house mayo. Light yet satisfying, this sandwich brings bright, aromatic flavors that'll transport you straight to Saigon.</p>
+            </div>
+        </div>
+        
+        <div class="sandwich-item">
+            <div class="sandwich-img">
+                [Tofu Banh Mi Image]
+            </div>
+            <div class="sandwich-content">
+                <h2>Tofu Banh Mi</h2>
+                <p>Crispy pan-fried tofu glazed in sweet soy sauce, layered with daikon, carrots, and fresh herbs for a vegetarian delight. Proof that plant-based can be just as bold and craveable as any meat-filled sandwich.</p>
+            </div>
+        </div>
+        
+        <div class="sandwich-item">
+            <div class="sandwich-img">
+                [Five-Spice Beef Banh Mi Image]
+            </div>
+            <div class="sandwich-content">
+                <h2>Five-Spice Beef Banh Mi</h2>
+                <p>Thinly sliced beef seared with aromatic five-spice blend and served with pickled vegetables and spicy Sriracha mayo. Rich, warming spices meet cool, crunchy toppings for an unforgettable flavor experience.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>Because life's too short for boring sandwiches. Greg's got you covered—one crispy baguette at a time.</footer>
+</body>
+</html>
